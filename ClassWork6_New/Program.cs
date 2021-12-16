@@ -100,10 +100,10 @@ namespace ClassWork6_New
             Console.WriteLine("Finally!");
         }
 
-        static void Main(string[] args)
+        static void Ex2()
         {
             int[,] arr = new int[5, 5];
-            for(int i = 0; i < arr.GetLength(0); i++)
+            for (int i = 0; i < arr.GetLength(0); i++)
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
@@ -112,6 +112,29 @@ namespace ClassWork6_New
             }
 
             Console.WriteLine(TwoDimentionalArraysHelper.MaxElement(arr));
+        }
+
+        static void Ex3()
+        {
+            Animal basya = new Animal();
+            Animal bobik = new Animal();
+            basya.Name = "Basya";
+            bobik.Name = "Bobik";
+            Animal[] animals = new Animal[2];
+            animals[0] = basya;
+            animals[1] = bobik;
+            foreach (var animal in animals)
+            {
+                animal.SayMyName();
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Rectangle rectangle = new Rectangle(5, 10);
+            //rectangle.A = 5;
+            //rectangle.B = 10;
+            Console.WriteLine($"{rectangle.GetPerimetr()};{rectangle.GetSquare()}");
         }
     }
 }
