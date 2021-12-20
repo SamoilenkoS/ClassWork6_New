@@ -1,5 +1,7 @@
 ﻿using CWLibrary;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ClassWork6_New
 {
@@ -147,16 +149,74 @@ namespace ClassWork6_New
             return result;
         }
 
+        static CoordinateQuater GetCoordinateQuater(int x, int y)
+        {
+            CoordinateQuater result = CoordinateQuater.Axis;
+            if(x > 0)
+            {
+                if(y > 0)
+                {
+                    result = CoordinateQuater.First;
+                }
+                else if(y < 0)
+                {
+                    result = CoordinateQuater.Second;
+                }
+            }
+            else if(x < 0)
+            {
+                if(y > 0)
+                {
+                    result = CoordinateQuater.Third;
+                }
+                else if(y < 0)
+                {
+                    result = CoordinateQuater.Fourth;
+                }
+            }
+
+            return result;
+        }
+
+        static double Convert(double sourceAmount, WeightUnits sourceUnits, WeightUnits destUnits)
+        {
+            return sourceAmount * (int)sourceUnits / (int)destUnits;
+        }
+
+        static void Ex4()
+        {
+            Rectangle rectangle = new Rectangle();
+            //Point point = new Point();
+            //point.X = 10;
+            //Console.WriteLine($"{point.X}:{point.Y}");
+            //int sourceUnitsValue = 100;
+            //WeightUnits sourceUnits = WeightUnits.Gram;
+            //WeightUnits destUnits = WeightUnits.Kilogram;
+            //double destValue = Convert(sourceUnitsValue, sourceUnits, destUnits);
+            //Console.WriteLine(destValue);
+            ////string testString = nameof(testString);
+            //Console.WriteLine("Available colors:");
+            ////Console.WriteLine($"Calling {nameof(GetCoordinateQuater)}");
+            //var colors = Enum.GetValues(typeof(ConsoleColor));
+            //foreach (var color in colors)
+            //{
+            //    Console.Write($"{color}\t");
+            //}
+            //Console.WriteLine((int)GetCoordinateQuater(10, 10));
+        }
+
         static void Main(string[] args)
         {
-            try
-            {
-                Sum(int.MaxValue, 1);
-            }
-            catch(OverflowException)
-            {
-                Console.WriteLine("Info for user!");//
-            }
+            Rectangle rectangle = new Rectangle();
+            Console.WriteLine(rectangle["first"]);
+
+            //Money a = new Money(10, 5);
+            //Money b = new Money(5, 96);
+            //Console.WriteLine(string.Format("{0} + {1} = {2}",
+            //    a, b, a + b));
+            //int coins = (int)a;
+            //Console.WriteLine(coins);
+          //  Console.WriteLine($"{a} + {b} = {a + b}");
         }
     }
 }

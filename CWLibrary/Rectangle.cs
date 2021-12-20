@@ -6,18 +6,73 @@ namespace CWLibrary
 {
     public class Rectangle
     {
+        private static int _count;
+
         private double _a;
-        private double _b;
+        private int _number;
+        private readonly double _b;
+
+        public static int Count => _count;
+
+        public double A
+        {
+            get => _a;
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("A should be greater than zero!");
+                }
+                if (value > 0)
+                {
+                    _a = value;
+                }
+            }
+        }
+
+        public double Square => _a * _b;
+
+        public int this[string val]
+        {
+            get
+            {
+                if(val == "first")
+                {
+                    return 1;
+                }
+                else if(val == "second")
+                {
+                    return 2;
+                }
+
+                return 0;
+            }
+            set
+            {
+                
+            }
+        }
+
+        public int Number => _number;
+
+        static Rectangle()
+        {
+            _count = 0;
+        }
 
         public Rectangle()
         {
+            ++_count;
+            _number = _count;
             _a = 1;
             _b = 1;
         }
 
         public Rectangle(double a, double b)
         {
-            if(a <= 0 || b <= 0)
+            ++_count;
+            _number = _count;
+            if (a <= 0 || b <= 0)
             {
                 throw new ArgumentException();
             }
@@ -26,34 +81,17 @@ namespace CWLibrary
             _b = b;
         }
 
-        public void SetA(double a)
+        public Rectangle(double _a)
         {
-            if(a <= 0)
-            {
-                throw new ArgumentException("A should be greater than zero!");
-            }
-            if(a > 0)
-            {
-                _a = a;
-            }
+            this._a = _a;
         }
 
-        public void SetB(double b)
-        {
-            if (b > 0)
-            {
-                _b = b;
-            }
-        }
+        public double GetPerimetr() => (_a + _b) * 2;
 
-        public double GetSquare()
-        {
-            return _a * _b;
-        }
-
-        public double GetPerimetr()
-        {
-            return (_a + _b) * 2;
-        }
+        //public static implicit operator double(Rectangle rectangle)
+        //{
+        //    return rectangle.Square;
+        //}
+        //+-*/
     }
 }
