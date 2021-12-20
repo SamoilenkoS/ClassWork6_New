@@ -129,12 +129,34 @@ namespace ClassWork6_New
             }
         }
 
+        static int Sum(int a, int b)
+        {
+            int result;
+            try
+            {
+                checked
+                {
+                    result = a + b;
+                }
+            }
+            catch (OverflowException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
         static void Main(string[] args)
         {
-            Rectangle rectangle = new Rectangle(5, 10);
-            //rectangle.A = 5;
-            //rectangle.B = 10;
-            Console.WriteLine($"{rectangle.GetPerimetr()};{rectangle.GetSquare()}");
+            try
+            {
+                Sum(int.MaxValue, 1);
+            }
+            catch(OverflowException)
+            {
+                Console.WriteLine("Info for user!");//
+            }
         }
     }
 }

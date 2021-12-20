@@ -6,6 +6,11 @@ namespace CWLibrary
 {
     public class ArraysHelper
     {
+        /// <summary>
+        /// Reverse array from left to right
+        /// </summary>
+        /// <param name="array">Array to reverse</param>
+        /// <exception cref="ArgumentNullException" />
         public static void Reverse(int[] array)
         {
             if(array == null)
