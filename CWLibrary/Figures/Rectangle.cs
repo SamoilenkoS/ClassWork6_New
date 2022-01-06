@@ -1,36 +1,19 @@
-﻿using System;
+﻿using CWLibrary.Figures;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CWLibrary
 {
-    public class Rectangle
+    public class Rectangle : Shape
     {
         private static int _count;
 
-        private double _a;
         private int _number;
-        private readonly double _b;
 
         public static int Count => _count;
 
-        public double A
-        {
-            get => _a;
-            set
-            {
-                if (value <= 0)
-                {
-                    throw new ArgumentException("A should be greater than zero!");
-                }
-                if (value > 0)
-                {
-                    _a = value;
-                }
-            }
-        }
-
-        public double Square => _a * _b;
+        public double Square => A * B;
 
         public int this[string val]
         {
@@ -60,33 +43,31 @@ namespace CWLibrary
             _count = 0;
         }
 
-        public Rectangle()
+        public Rectangle() : base(1, 1)
         {
             ++_count;
             _number = _count;
-            _a = 1;
-            _b = 1;
         }
 
-        public Rectangle(double a, double b)
+        public Rectangle(double a, double b) : base(a, b)
         {
+            Name = $"Rectangle{_count}";
+
             ++_count;
             _number = _count;
-            if (a <= 0 || b <= 0)
-            {
-                throw new ArgumentException();
-            }
-
-            _a = a;
-            _b = b;
         }
 
-        public Rectangle(double _a)
+        public double GetPerimetr() => (A + B) * 2;
+
+        public override string ToString()
         {
-            this._a = _a;
+            return $"{A}:{B}";
         }
 
-        public double GetPerimetr() => (_a + _b) * 2;
+        public override double GetSomething()
+        {
+            return A * B;
+        }
 
         //public static implicit operator double(Rectangle rectangle)
         //{

@@ -1,4 +1,5 @@
 ﻿using CWLibrary;
+using CWLibrary.Figures;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -185,7 +186,6 @@ namespace ClassWork6_New
 
         static void Ex4()
         {
-            Rectangle rectangle = new Rectangle();
             //Point point = new Point();
             //point.X = 10;
             //Console.WriteLine($"{point.X}:{point.Y}");
@@ -205,10 +205,17 @@ namespace ClassWork6_New
             //Console.WriteLine((int)GetCoordinateQuater(10, 10));
         }
 
-        static void Main(string[] args)
+        static void Temp()
         {
-            Rectangle rectangle = new Rectangle();
-            Console.WriteLine(rectangle["first"]);
+
+            MyList myList = new MyList();
+            myList.AddBack(1);
+            myList.AddBack(5);
+            myList.AddBack(4);
+            for (int i = 0; i < myList.Length; i++)
+            {
+                Console.WriteLine(myList[i]);
+            }
 
             //Money a = new Money(10, 5);
             //Money b = new Money(5, 96);
@@ -216,7 +223,52 @@ namespace ClassWork6_New
             //    a, b, a + b));
             //int coins = (int)a;
             //Console.WriteLine(coins);
-          //  Console.WriteLine($"{a} + {b} = {a + b}");
+            //  Console.WriteLine($"{a} + {b} = {a + b}");
+        }
+
+        static void Downcast()
+        {
+            object a = new Rectangle();
+            if (a is Rectangle)
+            {
+                Rectangle r = a as Rectangle;
+                Console.WriteLine(r.Square);
+            }
+        }
+
+        static void Upcast()
+        {
+            Rectangle rectangle = new Rectangle();
+            int a = 10;
+            string test = "Hello world!";
+            object[] elements = new object[] { rectangle, a, test };
+            foreach (var item in elements)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            int[] arr = new int[5];
+            Shape[] shapes = new Shape[3];
+            shapes[0] = new Rectangle(3, 4);
+            shapes[2] = new Triangle(3, 4, 5);
+            shapes[2].A = 3 * 4 * 5;
+            foreach (var shape in shapes)
+            {
+                Console.WriteLine(shape?.A);
+                Console.Write(shape?.Name + "\t");
+                Console.WriteLine(shape?.GetSomething());
+            }
+
+            //Rectangle r4;
+            //Rectangle r1 = new Rectangle();
+            //Rectangle r2 = new Rectangle((int)10.5);
+            //Rectangle r3 = new Rectangle(10, 5);
+            //Console.WriteLine(r1);
+            //Console.WriteLine(r2);
+            //Console.WriteLine(r3);
         }
     }
 }
